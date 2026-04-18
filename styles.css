@@ -192,17 +192,17 @@ main,
   position: relative;
 }
 
-.panel img,
-.archive-card img,
-.feature-card img,
-.mini-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .panel {
   min-height: 280px;
+}
+
+.panel img {
+  width: 100%;
+  height: 280px;
+  object-fit: contain;
+  object-position: center;
+  background: #0a0a0a;
+  padding: 14px;
 }
 
 .panel-body,
@@ -253,6 +253,17 @@ main,
   min-height: 520px;
   transform: translateY(0);
   transition: transform 0.35s ease, border-color 0.35s ease;
+  display: block;
+  background: #0a0a0a;
+}
+
+.feature-card img {
+  width: 100%;
+  height: 520px;
+  object-fit: contain;
+  object-position: center;
+  background: #0a0a0a;
+  padding: 18px;
 }
 
 .feature-card:hover,
@@ -302,6 +313,15 @@ main,
   min-height: 160px;
   display: grid;
   grid-template-columns: 160px 1fr;
+}
+
+.mini-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+  object-position: center;
+  background: #0a0a0a;
+  padding: 10px;
 }
 
 .mini-card div {
@@ -354,14 +374,23 @@ main,
 .archive-card {
   min-height: 460px;
   transition: transform 0.35s ease, border-color 0.35s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .archive-card img {
+  width: 100%;
   height: 320px;
+  object-fit: contain;
+  object-position: center;
+  background: #0a0a0a;
+  padding: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 .archive-card .text {
   padding: 16px;
+  flex: 1;
 }
 
 .archive-card h3 {
@@ -441,8 +470,17 @@ main,
 
 .issue-hero-image {
   border: 1px solid var(--line);
-  background: var(--panel);
+  background: #0a0a0a;
   overflow: hidden;
+}
+
+.issue-hero-image img {
+  width: 100%;
+  height: 680px;
+  object-fit: contain;
+  object-position: center;
+  background: #0a0a0a;
+  padding: 18px;
 }
 
 .issue-hero-copy h1 {
@@ -544,6 +582,10 @@ main,
   .about-grid {
     grid-template-columns: 1fr;
   }
+
+  .issue-hero-image img {
+    height: 560px;
+  }
 }
 
 @media (max-width: 720px) {
@@ -561,15 +603,32 @@ main,
     grid-template-columns: 1fr;
   }
 
+  .mini-card img {
+    height: 220px;
+  }
+
   .card-grid {
     grid-template-columns: 1fr;
   }
 
   .archive-card img {
-    height: 280px;
+    height: 300px;
   }
 
   .feature-card {
     min-height: 420px;
+  }
+
+  .feature-card img {
+    height: 420px;
+  }
+
+  .panel img {
+    height: 220px;
+  }
+
+  .issue-hero-image img {
+    height: 420px;
+    padding: 12px;
   }
 }
