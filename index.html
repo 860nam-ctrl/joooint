@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JOOOINTmagazin</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <header>
+      <div class="nav">
+        <a href="index.html" class="logo-text">JOOOINTmagazin</a>
+        <nav class="nav-links">
+          <a href="#focus">Focus</a>
+          <a href="#issues">Issues</a>
+          <a href="#topics">Topics</a>
+          <a href="store.html">Store</a>
+          <a href="#about">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="ticker">
+        <div class="ticker-track">
+          <div class="ticker-item"><span>•</span>JOOOINTMAGAZIN ARCHIVE</div>
+          <div class="ticker-item"><span>•</span>ISSUES 01–12</div>
+          <div class="ticker-item"><span>•</span>ISSUE 13 COMING SOON</div>
+          <div class="ticker-item"><span>•</span>ART CULTURE / GOODS / APPAREL / TOPICS</div>
+          <div class="ticker-item"><span>•</span>JOOOINTMAGAZIN ARCHIVE</div>
+          <div class="ticker-item"><span>•</span>ISSUES 01–12</div>
+          <div class="ticker-item"><span>•</span>ISSUE 13 COMING SOON</div>
+          <div class="ticker-item"><span>•</span>ART CULTURE / GOODS / APPAREL / TOPICS</div>
+        </div>
+      </section>
+
+      <section class="hero reveal">
+        <div>
+          <div class="eyebrow">Art culture magazine / visual archive</div>
+          <h1>Archive as<br>Living Culture</h1>
+          <p>
+            JOOOINTmagazinの創刊号から現在の12号までを収めたアーカイブサイト。
+            誌面、表紙、ロゴ、グッズ、アパレル、そして今後追加される13号や新着トピックスまで、
+            作品としての雑誌を見せるためのポートフォリオとして構成。
+          </p>
+        </div>
+
+        <div class="hero-subgrid">
+          <div class="panel">
+            <img src="IMG_2910.JPG" alt="JOOOINT logo circle">
+            <div class="panel-body">
+              <p>ブランドロゴや可変ロゴ群も含めて、雑誌だけでなく視覚言語そのものをアーカイブする。</p>
+            </div>
+          </div>
+          <div class="panel">
+            <img src="IMG_9095.JPG" alt="JOOOINT logo frame">
+            <div class="panel-meta">
+              <div><strong>Issues</strong>01–12 Archive</div>
+              <div><strong>Upcoming</strong>Issue 13</div>
+              <div><strong>Expansion</strong>Goods / Apparel / Topics</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal" id="focus">
+        <div class="section-head">
+          <h2>Current Focus</h2>
+          <p>archive / upcoming / drops</p>
+        </div>
+        <div class="focus-grid">
+          <a class="feature-card" id="feature-card" href="#">
+            <img id="feature-image" src="" alt="featured image">
+            <div class="feature-overlay">
+              <div class="tag" id="feature-tag"></div>
+              <h3 id="feature-title"></h3>
+              <p id="feature-text"></p>
+            </div>
+          </a>
+          <div class="side-stack" id="focus-side"></div>
+        </div>
+      </section>
+
+      <section class="section reveal" id="issues">
+        <div class="section-head">
+          <h2>Issue Archive</h2>
+          <p>2013 – current</p>
+        </div>
+        <div class="controls" id="issue-filters"></div>
+        <div class="card-grid" id="issues-grid"></div>
+      </section>
+
+      <section class="section reveal" id="topics">
+        <div class="section-head">
+          <h2>Topics / Drops</h2>
+          <p>news / goods / apparel</p>
+        </div>
+        <div class="card-grid" id="topics-grid"></div>
+      </section>
+
+      <section class="section reveal" id="about">
+        <div class="section-head">
+          <h2>About</h2>
+          <p>what is jooointmagazin?</p>
+        </div>
+        <div class="about-grid">
+          <p>
+            JOOOINTmagazinは、創刊号から最新号までのアーカイブをひとつの流れとして見せるアートカルチャーマガジンのポートフォリオ。
+            モノクロを基調に、実験的なタイポグラフィ、ストリート感、和的モチーフ、グラフィックの混成を通して、
+            各号そのものが独立した作品として成立している。
+          </p>
+          <p>
+            このサイトでは、年代順のISSUEアーカイブに加えて、新商品情報、アパレル、イベント、ローンチ告知も更新できるように設計。
+            データは data.js にまとめてあるので、そこだけ直せば見た目を崩さず更新できる。
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>© JOOOINTmagazin Archive</div>
+      <div>Instagram / Contact / Store / Archive Request</div>
+    </footer>
+  </div>
+
+  <script src="data.js"></script>
+  <script>
+    const issueFilters = [
+      { label: 'All', value: 'all' },
+      { label: 'Issues', value: 'issue' },
+      { label: 'Upcoming', value: 'upcoming' }
+    ];
+
+    function createArchiveCard(item, type = 'issue') {
+      const label = type === 'issue' ? `Issue ${item.no}` : item.label;
+      return `
+        <a class="archive-card" href="${item.link || '#'}">
+          <img src="${item.image}" alt="${item.title}">
+          <div class="text">
+            <div class="eyeline">${label}</div>
+            <h3>${item.title}</h3>
+            <p>${item.description}</p>
+            <div class="meta">${item.meta}</div>
+          </div>
+        </a>
+      `;
+    }
+
+    function renderFeatured() {
+      const feature = siteData.featured;
+      document.getElementById('feature-card').href = feature.link || '#';
+      document.getElementById('feature-image').src = feature.image;
+      document.getElementById('feature-image').alt = feature.title;
+      document.getElementById('feature-tag').textContent = feature.tag;
+      document.getElementById('feature-title').textContent = feature.title;
+      document.getElementById('feature-text').textContent = feature.text;
+
+      document.getElementById('focus-side').innerHTML = siteData.focusCards.map(card => `
+        <a class="mini-card" href="${card.link || '#'}">
+          <img src="${card.image}" alt="${card.title}">
+          <div>
+            <h3>${card.title}</h3>
+            <p>${card.text}</p>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    function renderFilters(active = 'all') {
+      const wrap = document.getElementById('issue-filters');
+      wrap.innerHTML = issueFilters.map(filter => `
+        <button class="filter-btn ${filter.value === active ? 'active' : ''}" data-filter="${filter.value}">
+          ${filter.label}
+        </button>
+      `).join('');
+
+      wrap.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          renderFilters(btn.dataset.filter);
+          renderIssues(btn.dataset.filter);
+        });
+      });
+    }
+
+    function renderIssues(filter = 'all') {
+      const grid = document.getElementById('issues-grid');
+      const filtered = filter === 'all'
+        ? siteData.issues
+        : siteData.issues.filter(item => item.category === filter);
+      grid.innerHTML = filtered.map(item => createArchiveCard(item, 'issue')).join('');
+    }
+
+    function renderTopics() {
+      document.getElementById('topics-grid').innerHTML = siteData.topics
+        .map(item => createArchiveCard(item, 'topic'))
+        .join('');
+    }
+
+    function initReveal() {
+      const reveals = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.12 });
+      reveals.forEach(el => observer.observe(el));
+    }
+
+    renderFeatured();
+    renderFilters();
+    renderIssues();
+    renderTopics();
+    initReveal();
+  </script>
+</body>
+</html>
