@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Store | JOOOINTmagazin</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <header>
+      <div class="nav">
+        <a href="index.html" class="logo-text">JOOOINTmagazin</a>
+        <nav class="nav-links">
+          <a href="index.html#issues">Issues</a>
+          <a href="index.html#topics">Topics</a>
+          <a href="store.html">Store</a>
+          <a href="index.html#about">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="store-hero">
+        <div class="product-kicker">Goods / Apparel / New Drops</div>
+        <h1>Store /<br>Drops</h1>
+        <p>JOOOINTmagazinから派生するグッズ、アパレル、限定アイテム、新着ドロップ情報をまとめたページ。</p>
+      </section>
+
+      <section class="store-content">
+        <div class="card-grid" id="products-grid"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>© JOOOINTmagazin Store</div>
+      <div>Goods / Apparel / Special Items</div>
+    </footer>
+  </div>
+
+  <script src="data.js"></script>
+  <script>
+    document.getElementById('products-grid').innerHTML = siteData.products.map(item => `
+      <a class="archive-card" href="${item.link || '#'}">
+        <img src="${item.image}" alt="${item.title}">
+        <div class="text">
+          <div class="eyeline">${item.label}</div>
+          <h3>${item.title}</h3>
+          <p>${item.description}</p>
+          <div class="meta">${item.price} / ${item.status}</div>
+        </div>
+      </a>
+    `).join('');
+  </script>
+</body>
+</html>
